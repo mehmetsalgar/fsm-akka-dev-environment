@@ -3,10 +3,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fsm-akka-fsm-akka-4eyes-application
+  name: fsm-akka-foureyes
   labels:
     helm.sh/chart: fsm-akka-4eyes-application-1.0.2
-    app.kubernetes.io/name: fsm-akka-4eyes-application
+    app.kubernetes.io/name: foureyes
     app.kubernetes.io/instance: fsm-akka
     app.kubernetes.io/version: "1.0.2"
     app.kubernetes.io/managed-by: Helm
@@ -17,17 +17,17 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/name: fsm-akka-4eyes-application
+      app.kubernetes.io/name: foureyes
       app.kubernetes.io/instance: fsm-akka
       app: fsm-akka
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: fsm-akka-4eyes-application
+        app.kubernetes.io/name: foureyes
         app.kubernetes.io/instance: fsm-akka
         app: fsm-akka
     spec:
-      serviceAccountName: fsm-akka-fsm-akka-4eyes-application
+      serviceAccountName: fsm-akka-foureyes
       securityContext:
         {}
       containers:

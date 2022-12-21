@@ -2,3 +2,6 @@ address-check-application:
   resources:
     limits:
       cpu: 2
+
+fsm-akka-4eyes-application:
+  nameOverride: "foureyes"
