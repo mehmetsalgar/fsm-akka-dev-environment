@@ -3,11 +3,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "fsm-akka-foureyes-test-connection"
+  name: "foureyes-test-connection"
   labels:
     helm.sh/chart: fsm-akka-4eyes-application-1.0.2
     app.kubernetes.io/name: foureyes
-    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/instance: foureyes
     app.kubernetes.io/version: "1.0.2"
     app.kubernetes.io/managed-by: Helm
   annotations:
@@ -17,5 +17,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['fsm-akka-foureyes:8787']
+      args: ['foureyes:8787']
   restartPolicy: Never

@@ -3,11 +3,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fsm-akka-address-check-application
+  name: foureyes-address-check-application
   labels:
     helm.sh/chart: address-check-application-1.1.2
     app.kubernetes.io/name: address-check-application
-    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/instance: foureyes
     app.kubernetes.io/version: "1.1.2"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -15,14 +15,14 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: address-check-application
-      app.kubernetes.io/instance: fsm-akka
+      app.kubernetes.io/instance: foureyes
   template:
     metadata:
       labels:
         app.kubernetes.io/name: address-check-application
-        app.kubernetes.io/instance: fsm-akka
+        app.kubernetes.io/instance: foureyes
     spec:
-      serviceAccountName: fsm-akka-address-check-application
+      serviceAccountName: foureyes-address-check-application
       securityContext:
         {}
       containers:

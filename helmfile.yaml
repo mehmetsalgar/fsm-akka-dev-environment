@@ -3,7 +3,7 @@ repositories:
     url: http://fsmakka.salgar.org/repository/fsm-akka-helm/
 
 releases:
-  - name: fsm-akka
+  - name: foureyes
     namespace: fsmakka
     chart: fsm-akka/fsm-akka
     values:

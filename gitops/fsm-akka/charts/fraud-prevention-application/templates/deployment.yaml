@@ -3,11 +3,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fsm-akka-fraud-prevention-application
+  name: foureyes-fraud-prevention-application
   labels:
     helm.sh/chart: fraud-prevention-application-1.2.10
     app.kubernetes.io/name: fraud-prevention-application
-    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/instance: foureyes
     app.kubernetes.io/version: "1.2.10"
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -15,14 +15,14 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: fraud-prevention-application
-      app.kubernetes.io/instance: fsm-akka
+      app.kubernetes.io/instance: foureyes
   template:
     metadata:
       labels:
         app.kubernetes.io/name: fraud-prevention-application
-        app.kubernetes.io/instance: fsm-akka
+        app.kubernetes.io/instance: foureyes
     spec:
-      serviceAccountName: fsm-akka-fraud-prevention-application
+      serviceAccountName: foureyes-fraud-prevention-application
       securityContext:
         {}
       containers:
