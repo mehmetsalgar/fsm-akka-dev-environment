@@ -1,0 +1,22 @@
+---
+# Source: fsm-akka/charts/fraud-prevention-application/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: fsm-akka-fraud-prevention-application
+  labels:
+    helm.sh/chart: fraud-prevention-application-1.2.10
+    app.kubernetes.io/name: fraud-prevention-application
+    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/version: "1.2.10"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: fraud-prevention-application
+    app.kubernetes.io/instance: fsm-akka

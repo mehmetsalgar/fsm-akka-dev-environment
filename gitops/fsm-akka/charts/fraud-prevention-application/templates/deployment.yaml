@@ -1,0 +1,55 @@
+---
+# Source: fsm-akka/charts/fraud-prevention-application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fsm-akka-fraud-prevention-application
+  labels:
+    helm.sh/chart: fraud-prevention-application-1.2.10
+    app.kubernetes.io/name: fraud-prevention-application
+    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/version: "1.2.10"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: fraud-prevention-application
+      app.kubernetes.io/instance: fsm-akka
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: fraud-prevention-application
+        app.kubernetes.io/instance: fsm-akka
+    spec:
+      serviceAccountName: fsm-akka-fraud-prevention-application
+      securityContext:
+        {}
+      containers:
+        - name: fraud-prevention-application
+          securityContext:
+            {}
+          image: "k3d-fsm-akka.registry:5555/fsmakka/fraud-prevention-application:1.2.10"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          env:
+            - name: JDK_JAVA_OPTIONS
+              value: "-XshowSettings:vm -XX:+AlwaysActAsServerClassMachine -XX:TieredStopAtLevel=1 -noverify"

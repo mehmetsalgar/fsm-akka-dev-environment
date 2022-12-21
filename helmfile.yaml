@@ -1,0 +1,10 @@
+repositories:
+  - name: fsm-akka
+    url: http://fsmakka.salgar.org/repository/fsm-akka-helm/
+
+releases:
+  - name: fsm-akka
+    namespace: fsmakka
+    chart: fsm-akka/fsm-akka
+    values:
+      - values.yaml

@@ -1,0 +1,4 @@
+address-check-application:
+  resources:
+    limits:
+      cpu: 2

@@ -1,0 +1,1 @@
+helmfile template --output-dir-template $(pwd)/gitops/first-try 

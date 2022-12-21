@@ -1,0 +1,55 @@
+---
+# Source: fsm-akka/charts/credit-score-application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fsm-akka-credit-score-application
+  labels:
+    helm.sh/chart: credit-score-application-1.1.8
+    app.kubernetes.io/name: credit-score-application
+    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/version: "1.1.8"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: credit-score-application
+      app.kubernetes.io/instance: fsm-akka
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: credit-score-application
+        app.kubernetes.io/instance: fsm-akka
+    spec:
+      serviceAccountName: fsm-akka-credit-score-application
+      securityContext:
+        {}
+      containers:
+        - name: credit-score-application
+          securityContext:
+            {}
+          image: "k3d-fsm-akka.registry:5555/fsmakka/credit-score-application:1.1.8"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          env:
+            - name: JDK_JAVA_OPTIONS
+              value: "-XshowSettings:vm -XX:+AlwaysActAsServerClassMachine -XX:TieredStopAtLevel=1 -noverify"

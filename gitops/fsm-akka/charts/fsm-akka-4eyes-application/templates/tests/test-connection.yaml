@@ -1,0 +1,21 @@
+---
+# Source: fsm-akka/charts/fsm-akka-4eyes-application/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "fsm-akka-fsm-akka-4eyes-application-test-connection"
+  labels:
+    helm.sh/chart: fsm-akka-4eyes-application-1.0.2
+    app.kubernetes.io/name: fsm-akka-4eyes-application
+    app.kubernetes.io/instance: fsm-akka
+    app.kubernetes.io/version: "1.0.2"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['fsm-akka-fsm-akka-4eyes-application:8787']
+  restartPolicy: Never
