@@ -1,1 +1,1 @@
-helmfile template --output-dir-template $(pwd)/gitops/first-try 
+helmfile template --output-dir-template $(pwd)/gitops/fsmakka 
