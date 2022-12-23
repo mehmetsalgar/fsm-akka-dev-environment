@@ -9,3 +9,24 @@ releases:
     version: 1.1.2
     values:
       - values.yaml
+
+  - name: address-check
+    namespace: fsmakka
+    chart: fsm-akka/address-check-application
+    version: 1.1.2
+  - name: credit-score
+    namespace: fsmakka
+    chart: fsm-akka/address-check-application
+    version: 1.1.8
+  - name: fraud-prevention
+    namespace: fsmakka
+    chart: fsm-akka/fraud-prevention-application
+    version: 1.2.10
+  - name: customer-relationship-adapter
+    namespace: fsmakka
+    chart: fsm-akka/customer-relationship-adapter-application
+    version: 1.1.6
+  - name: fsm-akka-4eyes-application
+    namespace: fsmakka
+    chart: fsm-akka/fsm-akka-4eyes-application
+    version: 1.0.2
