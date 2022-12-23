@@ -3,20 +3,15 @@ repositories:
     url: http://fsmakka.salgar.org/repository/fsm-akka-helm/
 
 releases:
-  - name: foureyes
-    namespace: fsmakka
-    chart: fsm-akka/fsm-akka
-    version: 1.1.2
-    values:
-      - values.yaml
-
   - name: address-check
     namespace: fsmakka
     chart: fsm-akka/address-check-application
     version: 1.1.2
+    values:
+      - values-address-check.yaml
   - name: credit-score
     namespace: fsmakka
-    chart: fsm-akka/address-check-application
+    chart: fsm-akka/credit-score-application
     version: 1.1.8
   - name: fraud-prevention
     namespace: fsmakka
@@ -26,7 +21,9 @@ releases:
     namespace: fsmakka
     chart: fsm-akka/customer-relationship-adapter-application
     version: 1.1.6
-  - name: fsm-akka-4eyes-application
+  - name: foureyes
     namespace: fsmakka
     chart: fsm-akka/fsm-akka-4eyes-application
     version: 1.0.2
+    values:
+      - values-fsm-akka-4eyes.yaml

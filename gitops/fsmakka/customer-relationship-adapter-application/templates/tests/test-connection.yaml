@@ -1,0 +1,21 @@
+---
+# Source: customer-relationship-adapter-application/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "customer-relationship-adapter-customer-relationship-adapter-app-test-connection"
+  labels:
+    helm.sh/chart: customer-relationship-adapter-application-1.1.6
+    app.kubernetes.io/name: customer-relationship-adapter-application
+    app.kubernetes.io/instance: customer-relationship-adapter
+    app.kubernetes.io/version: "1.1.6"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['customer-relationship-adapter-customer-relationship-adapter-app:8080']
+  restartPolicy: Never
