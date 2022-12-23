@@ -6,5 +6,6 @@ releases:
   - name: foureyes
     namespace: fsmakka
     chart: fsm-akka/fsm-akka
+    version: 1.1.2
     values:
       - values.yaml
