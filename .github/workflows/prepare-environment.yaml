@@ -1,0 +1,15 @@
+name: Prepare Environment
+run-name: ${{ github.actor }}
+on:
+  workflow_dispatch:
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.2.0
+      - name: DoTemplate
+        run: |
+          echo 'Deploy Umbrella Chart for Service Pipeline'
+          helmfile --version
+          #helmfile template --output-dir-template $(pwd)/gitops/fsmakka
