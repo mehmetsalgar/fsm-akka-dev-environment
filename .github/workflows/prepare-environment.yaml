@@ -8,18 +8,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          ref: 'bitnami'
           fetch-depth: 0
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.3
+        with:
+          path: ./gitops/fsmakka/
       - name: Setup helmfile
         uses: mamezou-tech/setup-helmfile@v1.2.0
       - name: DoTemplate
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
           helmfile --version
-          #helmfile template --output-dir-template $(pwd)/gitops/fsmakka
-          echo ${date +%F_%T} >> ./gitops/fsmakka/fsm-akka/charts/fsm-akka-4eyes-application/create_helm_templates.txt
+          helmfile template --output-dir-template $(pwd)/gitops/fsmakka
+          echo '"${date +%F_%T}"' >> ./gitops/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
         with:
-          add: './gitops/fsmakka/fsm-akka/charts/fsm-akka-4eyes-application'
+          add: './gitops/fsmakka/fsm-akka/'
           message: 'Created Manifests'
           committer_name: GitHub Actions
           committer_email: actions@github.com
