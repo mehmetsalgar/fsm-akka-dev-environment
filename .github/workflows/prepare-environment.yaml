@@ -24,7 +24,7 @@ jobs:
           echo '"${date +%F_%T}"' > ./gitops/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
         with:
-          add: './gitops/fsmakka/fsm-akka/'
+          add: './gitops/fsmakka/'
           message: 'Created Manifests'
           committer_name: GitHub Actions
           committer_email: actions@github.com
