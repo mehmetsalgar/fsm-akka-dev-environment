@@ -1,3 +1,0 @@
-date +%F_%T
-date +%F_%T
-date +%F_%T
