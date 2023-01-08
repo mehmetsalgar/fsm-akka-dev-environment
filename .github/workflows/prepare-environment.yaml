@@ -30,6 +30,6 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: './gitops/fsmakka/'
-          message: 'Created Manifests for ${{ source-repo }}-${{ version }}'
+          message: 'Created Manifests for ${{ inputs.source-repo }}-${{ inputs.version }}'
           committer_name: GitHub Actions
           committer_email: actions@github.com
