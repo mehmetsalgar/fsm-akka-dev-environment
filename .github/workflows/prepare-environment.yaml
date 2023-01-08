@@ -2,6 +2,9 @@ name: Prepare Environment
 run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
+inputs:
+  source-repo: ''
+  version: ''
 jobs:
   prepare:
     runs-on: ubuntu-latest
