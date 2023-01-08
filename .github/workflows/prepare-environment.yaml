@@ -33,3 +33,5 @@ jobs:
           message: 'Created Manifests for ${{ inputs.source-repo }}-${{ inputs.version }}'
           committer_name: GitHub Actions
           committer_email: actions@github.com
+          tag: '${{ inputs.source-repo }}-${{ inputs.version }} --force'
+          tag_push: '--force'
