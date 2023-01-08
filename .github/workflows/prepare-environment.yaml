@@ -3,8 +3,10 @@ run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      source-repo: ''
-      version: ''
+      source-repo:
+        type: string
+      version:
+        type: string
 jobs:
   prepare:
     runs-on: ubuntu-latest
