@@ -1,4 +1,4 @@
-name: Prepare Environment
+name: Prepare Services Environment
 run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
