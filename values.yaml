@@ -5,3 +5,5 @@ address-check-application:
 
 fsm-akka-4eyes-application:
   nameOverride: "foureyes"
+
+version: 19.5.4

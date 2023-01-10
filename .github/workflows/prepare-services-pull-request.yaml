@@ -1,0 +1,41 @@
+name: Prepare Environment
+run-name: ${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      source-repo:
+        type: string
+      version:
+        type: string
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: '${{ github.event.workflow_run.head_branch }}'
+          fetch-depth: 0
+      - name: Display Branch
+        run: |
+          echo "Branch: ${{ github.event.workflow_run.head_branch }}"
+      - name: Remove File
+        uses: JesseTG/rm@v1.0.3
+        with:
+          path: ./gitops/fsmakka/
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.2.0
+      - name: DoTemplate
+        run: |
+          echo 'Deploy Umbrella Chart for Service Pipeline'
+          helmfile --version
+          helmfile template -set version=19.5.1 --output-dir-template ./gitops/fsmakka
+          echo $(date +%F_%T) > ./gitops/fsmakka/create_helm_templates.txt
+          echo 'Version: "${{ inputs.version }}"'
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: './gitops/fsmakka/'
+          message: 'Created Manifests for ${{ inputs.source-repo }}-${{ inputs.version }}'
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
+          tag: '${{ inputs.source-repo }}-${{ inputs.version }} --force'
+          tag_push: '--force'
