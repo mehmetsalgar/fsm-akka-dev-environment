@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - name: Display Branch
         run: |
-          echo "Branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "Branch: ${{ github.ref }}"
       - name: Remove File
         uses: JesseTG/rm@v1.0.3
         with:
