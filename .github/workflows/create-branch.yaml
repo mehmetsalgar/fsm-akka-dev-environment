@@ -17,4 +17,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
         with:
-          branch: 'refs/heads/${{ inputs.branch-name }}'
+          branch: '${{ inputs.branch-name }}'
