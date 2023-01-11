@@ -6,6 +6,6 @@ releases:
   - name: es
     namespace: elasticsearch
     chart: bitnami/elasticsearch
-    version: ${{ .Values.version }}
+    version: {{ .Values.version }}
     values:
       - values.yaml
