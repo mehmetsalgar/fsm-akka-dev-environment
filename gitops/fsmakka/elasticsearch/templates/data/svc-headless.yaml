@@ -7,7 +7,7 @@ metadata:
   namespace: "elasticsearch"
   labels:
     app.kubernetes.io/name: elasticsearch
-    helm.sh/chart: elasticsearch-19.5.4
+    helm.sh/chart: elasticsearch-19.5.2
     app.kubernetes.io/instance: es
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: data
