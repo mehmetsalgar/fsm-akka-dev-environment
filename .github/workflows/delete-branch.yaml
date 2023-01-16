@@ -1,3 +1,4 @@
+name: Delete Branch
 run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
