@@ -7,7 +7,7 @@ metadata:
   namespace: "elasticsearch"
   labels:
     app.kubernetes.io/name: elasticsearch
-    helm.sh/chart: elasticsearch-19.5.4
+    helm.sh/chart: elasticsearch-19.5.2
     app.kubernetes.io/instance: es
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/component: data
@@ -28,7 +28,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: elasticsearch
-        helm.sh/chart: elasticsearch-19.5.4
+        helm.sh/chart: elasticsearch-19.5.2
         app.kubernetes.io/instance: es
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/component: data
@@ -50,7 +50,7 @@ spec:
       initContainers:
         ## Image that performs the sysctl operation to modify Kernel settings (needed sometimes to avoid boot errors)
         - name: sysctl
-          image: docker.io/bitnami/bitnami-shell:11-debian-11-r54
+          image: docker.io/bitnami/bitnami-shell:11-debian-11-r52
           imagePullPolicy: "IfNotPresent"
           command:
             - /bin/bash
@@ -74,7 +74,7 @@ spec:
             requests: {}
       containers:
         - name: elasticsearch
-          image: docker.io/bitnami/elasticsearch:8.5.2-debian-11-r0
+          image: docker.io/bitnami/elasticsearch:8.5.1-debian-11-r0
           imagePullPolicy: "IfNotPresent"
           securityContext:
             runAsNonRoot: true
