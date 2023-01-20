@@ -4,8 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       source-repo:
+        required: true
         type: string
       version:
+        required: true
         type: string
 jobs:
   prepare:
