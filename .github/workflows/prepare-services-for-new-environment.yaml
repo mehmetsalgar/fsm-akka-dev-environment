@@ -3,9 +3,11 @@ run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      source-repo:
+      tag:
+        required: true
         type: string
       version:
+        required: true
         type: string
 jobs:
   prepare:
