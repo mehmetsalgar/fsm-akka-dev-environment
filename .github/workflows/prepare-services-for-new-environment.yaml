@@ -3,12 +3,15 @@ run-name: ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
-      source-repo:
+      tag:
+        required: true
         type: string
       version:
+        required: true
         type: string
 jobs:
   prepare:
+    name: Preparing Services Environment
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,8 +37,8 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: './gitops/fsmakka/'
-          message: 'Created Manifests for ${{ inputs.source-repo }}-${{ inputs.version }}'
+          message: 'Created Manifests for ${{ inputs.tag}}'
           committer_name: GitHub Actions
           committer_email: actions@github.com
-          tag: '${{ inputs.source-repo }}-${{ inputs.version }} --force'
+          tag: '${{ inputs.tag }} --force'
           tag_push: '--force'
