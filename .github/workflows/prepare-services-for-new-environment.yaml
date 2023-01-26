@@ -1,5 +1,5 @@
 name: Prepare Services Environment
-run-name: ${{ github.actor }}
+run-name: Preparing Environment for new Environment triggered via ${{ github.event_name }} by ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:

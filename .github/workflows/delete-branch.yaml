@@ -1,5 +1,5 @@
 name: Delete Branch
-run-name: ${{ github.actor }}
+run-name: Deleting Branch triggered via ${{ github.event_name }} by ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
