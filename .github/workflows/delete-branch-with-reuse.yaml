@@ -10,5 +10,5 @@ jobs:
   delete:
     uses: mehmetsalgar/fsm-akka-github-workflows/.github/workflows/delete-branch.yaml@master
     with:
-      branches: ${{ inputs.branch-name }}
+      branch-name: ${{ inputs.branch-name }}
     secrets: inherit
