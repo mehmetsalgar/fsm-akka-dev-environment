@@ -1,16 +1,11 @@
 repositories:
-  - name: bitnami
-    url: https://charts.bitnami.com/bitnami
-
-environments:
-  default:
-    values:
-      - default.yaml
+  - name: fsm-akka
+    url: http://fsmakka.salgar.org/repository/fsm-akka-helm/
 
 releases:
-  - name: es
-    namespace: elasticsearch
-    chart: bitnami/elasticsearch
-    version: {{ .StateValues.version }}
+  - name: foureyes
+    namespace: fsmakka
+    chart: fsm-akka/fsm-akka
+    version: ~1.2.0-alpha
     values:
-      - ./values.yaml
+      - values.yaml
