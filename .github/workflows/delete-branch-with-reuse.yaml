@@ -1,0 +1,14 @@
+name: Delete Branch
+run-name: Deleting Branch triggered via ${{ github.event_name }} by ${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      branch-name:
+        required: true
+        type: string
+jobs:
+  delete:
+    uses: mehmetsalgar/fsm-akka-github-workflows/.github/workflows/delete-branch.yaml@master
+    with:
+      branches: ${{ inputs.branch-name }}
+    secrets: inherit
