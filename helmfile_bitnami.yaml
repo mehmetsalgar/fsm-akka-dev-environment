@@ -13,4 +13,4 @@ releases:
     chart: bitnami/elasticsearch
     version: {{ .StateValues.version }}
     values:
-      - ./values.yaml
+      - ./values-dev.yaml

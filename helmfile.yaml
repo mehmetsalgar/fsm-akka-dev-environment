@@ -8,4 +8,4 @@ releases:
     chart: fsm-akka/fsm-akka
     version: ~1.2.0-alpha
     values:
-      - values.yaml
+      - values-dev.yaml

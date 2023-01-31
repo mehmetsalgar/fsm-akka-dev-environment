@@ -27,6 +27,7 @@ jobs:
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
           helmfile --version
+          helm version
           helmfile template --output-dir-template ./gitops/fsmakka
           echo $(date +%F_%T) > ./gitops/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
