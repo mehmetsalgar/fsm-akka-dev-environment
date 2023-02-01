@@ -1,5 +1,5 @@
 name: Prepare Environment
-run-name: Preparing Environment for Development triggered via ${{ github.event_name }} by ${{ github.actor }}
+run-name: Preparing Environment for Development for Repo ${{ inputs.repo }} - Version ${{ inputs.version }} triggered via ${{ github.event_name }} by ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
