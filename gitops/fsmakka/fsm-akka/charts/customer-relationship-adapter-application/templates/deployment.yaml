@@ -1,0 +1,55 @@
+---
+# Source: fsm-akka/charts/customer-relationship-adapter-application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foureyes-customer-relationship-adapter-application
+  labels:
+    helm.sh/chart: customer-relationship-adapter-application-1.1.6
+    app.kubernetes.io/name: customer-relationship-adapter-application
+    app.kubernetes.io/instance: foureyes
+    app.kubernetes.io/version: "1.1.6"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: customer-relationship-adapter-application
+      app.kubernetes.io/instance: foureyes
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: customer-relationship-adapter-application
+        app.kubernetes.io/instance: foureyes
+    spec:
+      serviceAccountName: foureyes-customer-relationship-adapter-application
+      securityContext:
+        {}
+      containers:
+        - name: customer-relationship-adapter-application
+          securityContext:
+            {}
+          image: "k3d-fsm-akka.registry:5555/fsmakka/customer-relationship-adapter-application:1.1.6"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+          resources:
+            limits:
+              cpu: 100m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 256Mi
+          env:
+            - name: JDK_JAVA_OPTIONS
+              value: "-XshowSettings:vm"
