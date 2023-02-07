@@ -6,6 +6,11 @@ parameters:
   - name: branchName
     type: string
 
-steps:
-  - pwsh: |
-      echo 'Hello from repo: ${{.parameters.sourceRepo }} @ ${{.parameters.branchName }}'
+jobs:
+  - job: dispatched
+    variables:
+      source-repo: ${{.parameters.sourceRepo }}
+      branch-name: ${{.parameters.branchName }}
+    steps:
+      - pwsh: |
+          echo 'Hello from repo: $(source-repo) @ $(branch-name)'
