@@ -1,6 +1,4 @@
-trigger:
-  branch:
-    - master
+trigger: none
 
 steps:
   - pwsh: |
