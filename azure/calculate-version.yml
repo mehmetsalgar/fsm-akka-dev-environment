@@ -1,5 +1,11 @@
 trigger: none
 
+parameters:
+  - name: sourceRepo
+    type: string
+  - name: branchName
+    type: string
+
 steps:
   - pwsh: |
-      echo 'Hello'
+      echo 'Hello from repo: ${{.parameters.sourceRepo }} @ ${{.parameters.branchName }}'
