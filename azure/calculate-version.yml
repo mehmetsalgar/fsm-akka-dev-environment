@@ -1,0 +1,7 @@
+trigger:
+  branch:
+    - master
+
+steps:
+  - pwsh: |
+      echo 'Hello'
