@@ -9,8 +9,8 @@ parameters:
 jobs:
   - job: dispatched
     variables:
-      source-repo: ${{.parameters.sourceRepo }}
-      branch-name: ${{.parameters.branchName }}
+      source-repo: ${{ parameters.sourceRepo }}
+      branch-name: ${{ parameters.branchName }}
     steps:
       - pwsh: |
           echo 'Hello from repo: $(source-repo) @ $(branch-name)'
