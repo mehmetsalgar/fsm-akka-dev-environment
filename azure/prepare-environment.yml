@@ -8,6 +8,6 @@ jobs:
             tar -xvf helmfile.tar.gz
             ls -al
             chmod +x helmfile
-            helmfile --version
+            ./helmfile --version
 
 
