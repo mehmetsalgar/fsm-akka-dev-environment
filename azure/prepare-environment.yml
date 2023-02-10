@@ -6,5 +6,6 @@ jobs:
         - bash: |
             curl -L https://github.com/helmfile/helmfile/releases/download/v0.150.0/helmfile_0.150.0_linux_amd64.tar.gz > helmfile.tar.gz
             ls -al
+            tar -xf helmfile.tar.gz
 
 
