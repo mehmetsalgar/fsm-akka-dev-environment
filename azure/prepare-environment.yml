@@ -1,13 +1,36 @@
-trigger: none
+name: Prepare Environment
+
+parameters:
+  - name: sourceRepo
+    type: string
+  - name: version
+    type: string
 
 jobs:
   - job: helmfile
+    variables:
+      - name: source-repo
+        value: $(parameters.sourceRepo)
+      - name: version
+        value: $(parameters.version)
     steps:
+        - task: DeleteFiles@1
+          displayName: Clearing gitops directories
+          inputs:
+            SourceFolder: ./gitops/fsmakka
+            Contents: "**/*"
         - bash: |
             curl -L https://github.com/helmfile/helmfile/releases/download/v0.150.0/helmfile_0.150.0_linux_amd64.tar.gz > helmfile.tar.gz
             tar -xvf helmfile.tar.gz
             ls -al
             chmod +x helmfile
-            ./helmfile --version
+            ./helmfile template --output-dir-template ./gitops/fsmakka
+          displayName: Helmfile Execution
+        - script: |
+            git add ./gitops/fsmakka/\*
+            git commit -m "$(source-repo)-$(version)"
+            git tag -a $(source-repo)-$(version) --force
+            git push origin $(source-repo)-$(version) -- force
+          
 
 
