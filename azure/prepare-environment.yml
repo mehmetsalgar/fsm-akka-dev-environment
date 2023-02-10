@@ -3,7 +3,7 @@ trigger: none
 jobs:
   - job: helmfile
     steps:
-        - pwsh: |
+        - bash: |
             curl -L https://github.com/helmfile/helmfile/releases/download/v0.150.0/helmfile_linux_amd64 > helmfile
             chmod +x helmfile
             helmfile --version
