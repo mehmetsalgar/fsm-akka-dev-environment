@@ -1,5 +1,5 @@
 name: Prepare Services Environment
-run-name: Preparing Environment for new Environment triggered via ${{ github.event_name }} by ${{ github.actor }}
+run-name: Preparing Environment for Tag ${{ inputs.tag }} - Version ${{ inputs.version }} triggered via ${{ github.event_name }} by ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:

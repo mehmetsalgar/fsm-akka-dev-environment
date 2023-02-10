@@ -1,0 +1,16 @@
+trigger: none
+
+parameters:
+  - name: sourceRepo
+    type: string
+  - name: branchName
+    type: string
+
+jobs:
+  - job: dispatched
+    variables:
+      source-repo: ${{ parameters.sourceRepo }}
+      branch-name: ${{ parameters.branchName }}
+    steps:
+      - pwsh: |
+          echo 'Hello from repo: $(source-repo) @ $(branch-name)'

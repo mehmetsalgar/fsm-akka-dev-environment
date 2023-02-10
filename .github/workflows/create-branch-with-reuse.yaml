@@ -1,5 +1,5 @@
 name: Create Branch
-run-name: Creating Branch triggered via ${{ github.event_name }} by ${{ github.actor }}
+run-name: Creating Branch ${{ inputs.branch }} for Base Branch ${{ inputs.base-branch-name }} triggered via ${{ github.event_name }} by ${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
