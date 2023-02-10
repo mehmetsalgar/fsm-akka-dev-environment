@@ -1,2 +1,10 @@
 trigger: none
 
+jobs:
+  - job: helmfile
+    steps:
+        - task: HelmfileInstaller@1
+
+        - pwsh: |
+            helmfile --version
+
