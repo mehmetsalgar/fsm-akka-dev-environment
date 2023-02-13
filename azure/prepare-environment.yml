@@ -35,13 +35,15 @@ jobs:
           displayName: Helmfile Execution
         - script: |
             git fetch --all
-            git switch $(basename $(Build.SourceBranch))
+            git checkout -b $(basename $(Build.SourceBranch))
             git config --global user.email "$(Build.RequestedForEmail)"
             git config --global user.name "$(Build.RequestedFor)"
             git add ./gitops/fsmakka/\*
+            git status
             git commit -a -m "$SOURCE_REPO-$VERSION"
             git tag "$SOURCE_REPO-$(version)" --force
-            git push origin "$SOURCE_REPO-$VERSION" -- force
+            git push -u origin $(basename $(Build.SourceBranch))
+            git push origin "$SOURCE_REPO-$VERSION" --force
           displayName: Git Tag
           env:
             SOURCE_REPO: $(source-repo)
