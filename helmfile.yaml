@@ -1,11 +1,11 @@
 repositories:
   - name: fsm-akka
-    url: http://fsmakka.salgar.org/repository/fsm-akka-helm/
+    url: oci://fsmakka.azurecr.io/helm
 
 releases:
   - name: foureyes
     namespace: fsmakka
-    chart: fsm-akka/fsm-akka
+    chart: fsm-akka/fsm-akka-helm-umbrella-chart-az
     version: {{ .StateValues.version }}
     values:
       - values-dev.yaml
