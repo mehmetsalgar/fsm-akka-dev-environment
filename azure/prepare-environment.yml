@@ -10,9 +10,9 @@ jobs:
   - job: helmfile
     variables:
       - name: source-repo
-        value: $(parameters.sourceRepo)
+        value: ${{ parameters.sourceRepo }}
       - name: version
-        value: $(parameters.version)
+        value: ${{ parameters.version }}
     steps:
         - task: DeleteFiles@1
           displayName: Clearing gitops directories
@@ -33,6 +33,3 @@ jobs:
             git commit -m "$(source-repo)-$(version)"
             git tag -a $(source-repo)-$(version) --force
             git push origin $(source-repo)-$(version) -- force
-          
-
-
