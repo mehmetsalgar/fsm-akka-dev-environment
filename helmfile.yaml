@@ -1,6 +1,8 @@
 repositories:
   - name: fsm-akka
     url: oci://fsmakka.azurecr.io/helm
+    username: {{ .StateValues.username }}
+    password: {{ .StateValues.password }}
 
 releases:
   - name: foureyes

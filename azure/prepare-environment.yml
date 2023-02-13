@@ -6,6 +6,10 @@ parameters:
   - name: version
     type: string
 
+variables:
+  - group: HELM_VARIABLES
+  - group: DOCKER_VARIABLES
+
 jobs:
   - job: helmfile
     variables:
@@ -24,7 +28,7 @@ jobs:
             tar -xvf helmfile.tar.gz
             ls -al
             chmod +x helmfile
-            ./helmfile template --output-dir-template ./gitops/fsmakka
+            ./helmfile template --state-values-set username=$(HELM_USER) --state-values-set password=$(HELM_PASSWORD) --output-dir-template ./gitops/fsmakka
           displayName: Helmfile Execution
         - script: |
             git add ./gitops/fsmakka/\*
