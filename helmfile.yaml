@@ -3,6 +3,7 @@ repositories:
     url: oci://fsmakka.azurecr.io/helm
     username: {{ .StateValues.username }}
     password: {{ .StateValues.password }}
+    oci: true
 
 environments:
   default:
@@ -12,7 +13,7 @@ environments:
 releases:
   - name: foureyes
     namespace: fsmakka
-    chart: fsm-akka/fsm-akka-helm-umbrella-chart-az
+    chart: oci://fsmakka.azurecr.io/helm/fsm-akka-helm-umbrella-chart-az
     version: {{ .StateValues.version }}
     values:
       - values-dev.yaml
