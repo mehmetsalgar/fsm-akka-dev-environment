@@ -34,9 +34,13 @@ jobs:
             git config --global user.email "$(Build.RequestedForEmail)"
             git config --global user.name "$(Build.RequestedFor)"
             git add ./gitops/fsmakka/\*
-            git commit -a -m "$(source-repo)-$(version)"
-            git tag "$(source-repo)-$(version)" --force
-            git push origin "$(source-repo)-$(version)" -- force
+            git commit -a -m "$SOURCE_REPO-$VERSION"
+            git tag "$SOURCE_REPO-$(version)" --force
+            git push origin "$SOURCE_REPO-$VERSION" -- force
+          displayName: Git Tag
+          env:
+            SOURCE_REPO: $(source-repo)
+            VERSION: $(version)
           
 
 
