@@ -4,6 +4,11 @@ repositories:
     username: {{ .StateValues.username }}
     password: {{ .StateValues.password }}
 
+environments:
+  default:
+    values:
+      - default.yaml
+
 releases:
   - name: foureyes
     namespace: fsmakka
