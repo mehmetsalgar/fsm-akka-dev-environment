@@ -18,6 +18,7 @@ jobs:
       - name: version
         value: ${{ parameters.version }}
     steps:
+        - checkout: self
         - task: DeleteFiles@1
           displayName: Clearing gitops directories
           inputs:
