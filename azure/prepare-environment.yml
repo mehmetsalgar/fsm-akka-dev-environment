@@ -27,6 +27,8 @@ jobs:
             ./helmfile template --output-dir-template ./gitops/fsmakka
           displayName: Helmfile Execution
         - script: |
+            git config --global user.email $(Build.RequestedForEmail)
+            git config --global user.name $(Build.RequestedFor)
             git add ./gitops/fsmakka/\*
             git commit -m "$(source-repo)-$(version)"
             git tag -a $(source-repo)-$(version) --force
