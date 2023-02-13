@@ -1,6 +1,6 @@
 repositories:
   - name: fsm-akka
-    url: oci://fsmakka.azurecr.io/helm
+    url: fsmakka.azurecr.io
     username: {{ .StateValues.username }}
     password: {{ .StateValues.password }}
     oci: true
