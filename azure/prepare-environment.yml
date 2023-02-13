@@ -19,6 +19,8 @@ jobs:
         value: ${{ parameters.version }}
     steps:
         - checkout: self
+          clean: true
+          persistCredentials: true
         - task: DeleteFiles@1
           displayName: Clearing gitops directories
           inputs:
@@ -32,6 +34,8 @@ jobs:
             ./helmfile template --state-values-set username=$(HELM_USER) --state-values-set password=$(HELM_PASSWORD) --output-dir-template ./gitops/fsmakka
           displayName: Helmfile Execution
         - script: |
+            git fetch --all
+            git switch $(basename $(Build.SourceBranch))
             git config --global user.email "$(Build.RequestedForEmail)"
             git config --global user.name "$(Build.RequestedFor)"
             git add ./gitops/fsmakka/\*
