@@ -5,10 +5,10 @@ kind: Deployment
 metadata:
   name: foureyes-fraud-prevention-application
   labels:
-    helm.sh/chart: fraud-prevention-application-1.2.0-alpha.98
+    helm.sh/chart: fraud-prevention-application-1.2.0-alpha.99
     app.kubernetes.io/name: fraud-prevention-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.2.0-alpha.98"
+    app.kubernetes.io/version: "1.2.0-alpha.99"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -29,7 +29,7 @@ spec:
         - name: fraud-prevention-application
           securityContext:
             {}
-          image: "k3d-fsmakka.azurecr.io/fsmakka/fraud-prevention-application:1.2.0-alpha.98"
+          image: "fsmakka.azurecr.io/fsmakka/fraud-prevention-application:1.2.0-alpha.99"
           imagePullPolicy: Always
           ports:
             - name: http
