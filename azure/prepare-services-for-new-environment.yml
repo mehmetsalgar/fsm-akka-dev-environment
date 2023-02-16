@@ -40,14 +40,14 @@ jobs:
           tar -xvf helmfile.tar.gz
           chmod +x helmfile
           git fetch --all
-          git checkout -b $BRANCH_NAME
+          git checkout $BRANCH_NAME
           git config --global user.email "$(Build.RequestedForEmail)"
           git config --global user.name "$(Build.RequestedFor)"
+          ./helmfile template --state-values-set username=$(HELM_USER) --state-values-set password=$(HELM_PASSWORD) --state-values-set version=$VERSION --output-dir-template ./gitops/fsmakka
           git add ./gitops/fsmakka/\*
           git commit -a -m "$TAG"
           git push -u origin $BRANCH_NAME
           git push origin "$TAG" --force
-          ./helmfile template --state-values-set username=$(HELM_USER) --state-values-set password=$(HELM_PASSWORD) --state-values-set version=$VERSION --output-dir-template ./gitops/fsmakka
         displayName: Helmfile Execution / Git Commit / Tag
         env:
           BRANCH_NAME: ${{ parameters.branchName }}
