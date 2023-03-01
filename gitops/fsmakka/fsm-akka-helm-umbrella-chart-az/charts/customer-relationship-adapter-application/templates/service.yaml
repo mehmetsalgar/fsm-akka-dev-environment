@@ -1,0 +1,22 @@
+---
+# Source: fsm-akka-helm-umbrella-chart-az/charts/customer-relationship-adapter-application/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: foureyes-customer-relationship-adapter-application
+  labels:
+    helm.sh/chart: customer-relationship-adapter-application-1.2.0-alpha.33
+    app.kubernetes.io/name: customer-relationship-adapter-application
+    app.kubernetes.io/instance: foureyes
+    app.kubernetes.io/version: "1.2.0-alpha.33"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: customer-relationship-adapter-application
+    app.kubernetes.io/instance: foureyes
