@@ -5,10 +5,10 @@ kind: Service
 metadata:
   name: foureyes-customer-relationship-adapter-application
   labels:
-    helm.sh/chart: customer-relationship-adapter-application-1.2.0-alpha.41
+    helm.sh/chart: customer-relationship-adapter-application-1.2.0-BF-2.1
     app.kubernetes.io/name: customer-relationship-adapter-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.2.0-alpha.41"
+    app.kubernetes.io/version: "1.2.0-BF-2.1"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
