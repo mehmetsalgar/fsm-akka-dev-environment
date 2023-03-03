@@ -14,8 +14,8 @@ variables:
   - group: DOCKER_VARIABLES
 
 jobs:
-  - job: CreateBranch
-    displayName: Create Branch
+  - job: ProcessHelmfile
+    displayName: Process Helmfile
     steps:
       - checkout: self
         clean: true
