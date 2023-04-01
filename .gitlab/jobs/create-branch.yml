@@ -1,0 +1,21 @@
+create-branch:
+  only:
+    variables:
+      - $CREATE_BRANCH == "true"
+  stage: build
+  image: alpine/git
+  before_script:
+    -  |
+        git config --global user.name "${GITLAB_USER_NAME}"
+        git config --global user.email "${GITLAB_USER_EMAIL}"
+  script:
+    - |
+      export
+      echo "Branch Name $BRANCH_NAME Repo Name $REPO_NAME for Version $VERSION"
+      #BRANCH_TO_CREATE=${BRANCH_NAME}-${REPO_NAME}
+      #git remote set-url origin "https://gitlab-ci-token:${GITHUB_TOKEN}@gitlab.devops.telekom.de/dbiz/chswe/sqddigen/camino/gitlab-pipelines.git"
+      #git remote -v
+      #git fetch --all
+      #git checkout -b $BRANCH_TO_CREATE
+      #git push -u origin $BRANCH_TO_CREATE
+      # see https://stackoverflow.com/questions/3601515/how-to-check-if-a-variable-is-set-in-bash to explain the conditional above
