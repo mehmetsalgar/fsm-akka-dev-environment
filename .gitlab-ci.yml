@@ -1,0 +1,10 @@
+stages:
+  - deploy
+
+process_helm:
+  stage: deploy
+  image: "${CI_REGISTRY}/gitlab-com/gl-infra/k8s-workloads/common/k8-helm-ci:${CI_IMAGE_VERSION}"
+  script:
+    - |
+      export
+      helmfile -v
