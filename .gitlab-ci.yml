@@ -1,6 +1,9 @@
 stages:
   - deploy
 
+variables:
+  CI_IMAGE_VERSION: v17.36.0
+
 process_helm:
   stage: deploy
   image: "${CI_REGISTRY}/gitlab-com/gl-infra/k8s-workloads/common/k8-helm-ci:${CI_IMAGE_VERSION}"
