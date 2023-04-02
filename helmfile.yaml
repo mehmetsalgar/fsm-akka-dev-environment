@@ -1,6 +1,6 @@
 repositories:
   - name: fsm-akka
-    url: fsmakka.azurecr.io
+    url: europe-west3-docker.pkg.dev/fsmakka/fsm-akka-helm-ar
     username: {{ .StateValues.username }}
     password: {{ .StateValues.password }}
     oci: true
