@@ -23,7 +23,7 @@ process-helm:
       git checkout development
       rm -rf ./gitops/gitlab/fsmakka/*
       cd fsm-akka-dev-environment
-      helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set=$HELM_URL --state-values-set=$HELM_PATH --output-dir-template ./gitops/gitlab/fsmakka
+      helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/gitlab/fsmakka
       git add ./gitops/gitlab/fsmakka/\*
       git commit -a -m "Helm Template for GKE"
       git push -u origin development
