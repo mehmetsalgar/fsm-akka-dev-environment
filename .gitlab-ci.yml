@@ -17,6 +17,8 @@ process-helm:
   script:
     - |
       export
+      GIT_DISCOVERY_ACROSS_FILESYSTEM=true
+      export GIT_DISCOVERY_ACROSS_FILESYSTEM
       cd ..
       mkdir workdir
       cd workdir
