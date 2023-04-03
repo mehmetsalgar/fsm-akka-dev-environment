@@ -13,7 +13,7 @@ environments:
 releases:
   - name: foureyes
     namespace: fsmakka
-    chart: oci://fsmakka.azurecr.io/helm/fsm-akka-helm-umbrella-chart-az
+    chart: oci://{{ .StateValues.url }}/{{ .StateValues.path }}
     version: {{ .StateValues.version }}
     values:
       - values-dev.yaml
