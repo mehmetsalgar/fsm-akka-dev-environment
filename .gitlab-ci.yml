@@ -14,6 +14,9 @@ process-helm:
   script:
     - |
       export
+      mkdir workdir
+      cd workdir
+      git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git
       git remote set-url origin "https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git remote -v
       git fetch --all
