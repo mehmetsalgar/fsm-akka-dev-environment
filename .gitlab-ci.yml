@@ -24,7 +24,7 @@ process-helm:
       rm -rf ./gitops/gitlab/fsmakka/*
       cd fsm-akka-dev-environment
       pwd
-      cat helmfile.yaml
+      cat default.yaml
       helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/gitlab/fsmakka
       git add ./gitops/gitlab/fsmakka/\*
       git commit -a -m "Helm Template for GKE"
