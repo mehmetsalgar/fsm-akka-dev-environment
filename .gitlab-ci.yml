@@ -17,6 +17,7 @@ process-helm:
   script:
     - |
       export
+      cd ..
       mkdir workdir
       cd workdir
       git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git
