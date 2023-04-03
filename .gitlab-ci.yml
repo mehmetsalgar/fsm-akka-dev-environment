@@ -11,6 +11,9 @@ process-helm:
     - |
       git config --global user.name "Mehmet Salgar"
       git config --global user.email "salgarm@gmx.de"
+      git config --global pull.rebase false
+      git config --global pull.rebase true
+      git config --global pull.ff only
   script:
     - |
       export
