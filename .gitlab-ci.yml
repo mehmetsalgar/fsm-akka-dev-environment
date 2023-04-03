@@ -20,7 +20,7 @@ process-helm:
       git remote set-url origin "https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git remote -v
       git fetch --all
-      git checkout development
+      git checkout --track origin/development
       rm -rf ./gitops/gitlab/fsmakka/*
       cd fsm-akka-dev-environment
       pwd
