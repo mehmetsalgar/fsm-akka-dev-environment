@@ -27,12 +27,12 @@ process-helm:
       git remote set-url origin "https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git remote -v
       git fetch --all
-      git pull origin development
-      git checkout development
+      git pull origin $UMBRELLA_BASE_BRANCH_NAME
+      git checkout $BRANCH_NAME
       rm -rf ./gitops/gitlab/fsmakka/*
       pwd
       cat default.yaml
       helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/gitlab/fsmakka
       git add ./gitops/gitlab/fsmakka/\*
       git commit -a -m "Helm Template for GKE"
-      git push -u origin development
+      git push -u origin $BRANCH_NAME
