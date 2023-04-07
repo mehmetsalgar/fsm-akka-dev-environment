@@ -20,6 +20,7 @@ process-helm:
       GIT_DISCOVERY_ACROSS_FILESYSTEM=true
       export GIT_DISCOVERY_ACROSS_FILESYSTEM
       cd ..
+      rm -fR workdir
       mkdir workdir
       cd workdir
       git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git
