@@ -19,24 +19,15 @@ process-helm:
       export
       GIT_DISCOVERY_ACROSS_FILESYSTEM=true
       export GIT_DISCOVERY_ACROSS_FILESYSTEM
-      pwd
-      cd ..
       echo "rm -fR workdir"
       rm -fR workdir
       mkdir workdir
-      echo "cd workdir"
       cd workdir
-      ls -al
       echo "git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git
       cd fsm-akka-dev-environment
-      echo "Git Branch Name: $GIT_BRANCH_NAME"
-      git checkout -B $GIT_BRANCH_NAME
-      ls -al
+      $GIT_CHECKOUT_COMMAND $GIT_BRANCH_NAME
       rm -rf ./gitops/gitlab/fsmakka/*
-      ls -al
-      pwd
-      cat default.yaml
       helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/gitlab/fsmakka
       echo $(date +%F_%T) > ./gitops/gitlab/fsmakka/create_helm_templates.txt
       git add ./gitops/gitlab/fsmakka/\*
