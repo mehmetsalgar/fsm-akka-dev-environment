@@ -23,6 +23,7 @@ process-helm:
       rm -fR workdir
       mkdir workdir
       cd workdir
+      ls -al
       git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git
       cd fsm-akka-dev-environment
       git remote set-url origin "https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
