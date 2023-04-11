@@ -19,17 +19,21 @@ process-helm:
       export
       GIT_DISCOVERY_ACROSS_FILESYSTEM=true
       export GIT_DISCOVERY_ACROSS_FILESYSTEM
+      pwd
       cd ..
+      echo "rm -fR workdir"
       rm -fR workdir
       mkdir workdir
+      echo "cd workdir"
       cd workdir
       ls -al
+      echo "git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git clone https://github.com/mehmetsalgar/fsm-akka-dev-environment.git
       cd fsm-akka-dev-environment
       git remote set-url origin "https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git remote -v
       git fetch --all
-      git pull origin $UMBRELLA_BASE_BRANCH_NAME
+      git pull --rebase origin $UMBRELLA_BASE_BRANCH_NAME
       git checkout $BRANCH_NAME
       rm -rf ./gitops/gitlab/fsmakka/*
       pwd
