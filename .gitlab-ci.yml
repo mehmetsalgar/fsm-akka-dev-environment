@@ -30,7 +30,7 @@ process-helm:
       echo "git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
       git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git
       cd fsm-akka-dev-environment
-      git checkout $BRANCH_NAME
+      git checkout -B GIT_BRANCH_NAME
       ls -al
       rm -rf ./gitops/gitlab/fsmakka/*
       ls -al
