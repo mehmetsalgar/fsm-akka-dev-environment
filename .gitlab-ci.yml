@@ -35,3 +35,14 @@ process-helm:
       git tag "$SOURCE_REPO-$SERVICE_VERSION" --force
       git push -u origin $GIT_BRANCH_NAME
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
+
+delete_branch:
+  stage: deploy
+  script:
+    - |
+      export
+      echo "Deleting Branch: $TARGET_BRANCH_NAME-$SOURCE_REPO"
+  rules:
+    - if: $USER_CASE_3 == "true"
+      when: always
+    - when: never
