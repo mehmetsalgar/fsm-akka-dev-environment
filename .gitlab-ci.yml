@@ -43,6 +43,6 @@ delete_branch:
       export
       echo "Deleting Branch: $TARGET_BRANCH_NAME-$SOURCE_REPO"
   rules:
-    - if: $USERCASE_3 == "true"
+    - if: $USE_CASE_3 == "true"
       when: always
     - when: never
