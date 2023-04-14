@@ -67,9 +67,10 @@ process-helm:
       helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/gitlab/fsmakka
       echo $(date +%F_%T) > ./gitops/gitlab/fsmakka/create_helm_templates.txt
       git add ./gitops/gitlab/fsmakka/\*
-      git commit -a -m "$SOURCE_REPO-$SERVICE_VERSION"
-      git tag "$SOURCE_REPO-$SERVICE_VERSION" --force
+      git commit -a -m "$TAG"
+      git tag $TAG --force
       git push -u origin $GIT_BRANCH_NAME
+      git push origin "$TAG" --force
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
   rules:
     - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true" || $USE_CASE_6 == "true") && $USE_CASE_3 != "true" && $USE_CASE_5 != "true" && $USE_CASE_7 != "true"
