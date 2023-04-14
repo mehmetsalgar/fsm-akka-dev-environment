@@ -36,7 +36,7 @@ process-helm-development:
       git push -u origin $GIT_BRANCH_NAME
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
   rules:
-    - if: $USE_CASE_1 == "true" && $USE_CASE_3 != "true"
+    - if: $USE_CASE_1 == "true" && $USE_CASE_3 != "true" && $USE_CASE_5 != "true"
       when: always
     - when: never
 
@@ -72,7 +72,7 @@ process-helm:
       git push -u origin $GIT_BRANCH_NAME
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
   rules:
-    - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true") && $USE_CASE_3 != "true"
+    - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true") && $USE_CASE_3 != "true" && $USE_CASE_5 != "true"
       when: always
     - when: never
 
@@ -83,6 +83,6 @@ delete_branch:
       export
       echo "Deleting Branch: $TARGET_BRANCH_NAME-$SOURCE_REPO"
   rules:
-    - if: $USE_CASE_3 == "true"
+    - if: ($USE_CASE_3 == "true" || $USE_CASE_5 == "true")
       when: always
     - when: never
