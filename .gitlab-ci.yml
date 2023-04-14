@@ -4,7 +4,7 @@ stages:
 variables:
   CI_IMAGE_VERSION: v17.36.0
 
-process-helm:
+process-helm-development:
   stage: deploy
   image: "${CI_REGISTRY}/gitlab-com/gl-infra/k8s-workloads/common/k8-helm-ci:${CI_IMAGE_VERSION}"
   before_script:
@@ -36,7 +36,43 @@ process-helm:
       git push -u origin $GIT_BRANCH_NAME
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
   rules:
-    - if: ($USE_CASE_1 == "true" || $USE_CASE_2 == "true" || $USE_CASE_4 == "true") && $USE_CASE_3 != "true"
+    - if: $USE_CASE_1 == "true" && $USE_CASE_3 != "true"
+      when: always
+    - when: never
+
+process-helm:
+  stage: deploy
+  image: "${CI_REGISTRY}/gitlab-com/gl-infra/k8s-workloads/common/k8-helm-ci:${CI_IMAGE_VERSION}"
+  before_script:
+    - |
+      git config --global user.name "Mehmet Salgar"
+      git config --global user.email "salgarm@gmx.de"
+      git config --global pull.rebase false
+      git config --global pull.rebase true
+      git config --global pull.ff only
+  script:
+    - |
+      export
+      GIT_DISCOVERY_ACROSS_FILESYSTEM=true
+      export GIT_DISCOVERY_ACROSS_FILESYSTEM
+      echo "rm -fR workdir"
+      rm -fR workdir
+      mkdir workdir
+      cd workdir
+      echo "git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git"
+      git clone https://mehmetsalgar:${GITHUB_TOKEN}@github.com/mehmetsalgar/fsm-akka-dev-environment.git
+      cd fsm-akka-dev-environment
+      $GIT_CHECKOUT_COMMAND $GIT_BRANCH_NAME
+      rm -rf ./gitops/gitlab/fsmakka/*
+      helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/gitlab/fsmakka
+      echo $(date +%F_%T) > ./gitops/gitlab/fsmakka/create_helm_templates.txt
+      git add ./gitops/gitlab/fsmakka/\*
+      git commit -a -m "$SOURCE_REPO-$SERVICE_VERSION"
+      git tag "$SOURCE_REPO-$SERVICE_VERSION" --force
+      git push -u origin $GIT_BRANCH_NAME
+      git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
+  rules:
+    - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true") && $USE_CASE_3 != "true"
       when: always
     - when: never
 
