@@ -2,4 +2,4 @@ username:
 password:
 url: fsmakka.azurecr.io
 path: helm/fsm-akka-helm-umbrella-chart-az
-version: '<=1.5.0-beta'
+version: '<=3.0.0-beta'
