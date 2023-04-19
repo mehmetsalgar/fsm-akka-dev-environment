@@ -73,7 +73,7 @@ process-helm:
       git push origin "$TAG" --force
       git push origin "$SOURCE_REPO-$SERVICE_VERSION" --force
   rules:
-    - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true" || $USE_CASE_6 == "true") && $USE_CASE_3 != "true" && $USE_CASE_5 != "true" && $USE_CASE_7 != "true" && $USE_CASE_11 != "true"
+    - if: ($USE_CASE_2 == "true" || $USE_CASE_4 == "true" || $USE_CASE_6 == "true" || $USE_CASE_10 == "true") && $USE_CASE_3 != "true" && $USE_CASE_5 != "true" && $USE_CASE_7 != "true" && $USE_CASE_11 != "true"
       when: always
     - when: never
 
