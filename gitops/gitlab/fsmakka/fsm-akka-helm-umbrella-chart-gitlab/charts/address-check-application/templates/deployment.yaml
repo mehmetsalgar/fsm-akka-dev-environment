@@ -1,35 +1,35 @@
 ---
-# Source: fsm-akka-helm-umbrella-chart-gitlab/charts/credit-score-application/templates/deployment.yaml
+# Source: fsm-akka-helm-umbrella-chart-gitlab/charts/address-check-application/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: foureyes-credit-score-application
+  name: foureyes-address-check-application
   labels:
-    helm.sh/chart: credit-score-application-2.5.0-rc.1
-    app.kubernetes.io/name: credit-score-application
+    helm.sh/chart: address-check-application-1.4.0-alpha.133
+    app.kubernetes.io/name: address-check-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "2.5.0-rc.1"
+    app.kubernetes.io/version: "1.4.0-alpha.133-HEAD"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: credit-score-application
+      app.kubernetes.io/name: address-check-application
       app.kubernetes.io/instance: foureyes
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: credit-score-application
+        app.kubernetes.io/name: address-check-application
         app.kubernetes.io/instance: foureyes
     spec:
-      serviceAccountName: foureyes-credit-score-application
+      serviceAccountName: foureyes-address-check-application
       securityContext:
         {}
       containers:
-        - name: credit-score-application
+        - name: address-check-application
           securityContext:
             {}
-          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/credit-score-application:2.5.0-rc.1"
+          image: "k3d-europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/address-check-application:1.4.0-alpha.133"
           imagePullPolicy: Always
           ports:
             - name: http
@@ -45,15 +45,11 @@ spec:
               port: 8080
           resources:
             limits:
-              cpu: 500m
-              ephemeral-storage: 5Mi
+              cpu: 2
               memory: 512Mi
             requests:
               cpu: 100m
-              ephemeral-storage: 1Mi
-              memory: 256Mi
+              memory: 512Mi
           env:
             - name: JDK_JAVA_OPTIONS
               value: "-XshowSettings:vm -XX:+AlwaysActAsServerClassMachine -XX:TieredStopAtLevel=1 -noverify"
-      nodeSelector:
-        iam.gke.io/gke-metadata-server-enabled: "true"
