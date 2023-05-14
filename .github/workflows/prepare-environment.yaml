@@ -28,7 +28,7 @@ jobs:
       - name: Setup helmfile
         uses: mamezou-tech/setup-helmfile@v1.2.0
         with:
-          helmfile-version: "v0.150.0"
+          helmfile-version: "v0.153.1"
           helm-version: "v3.11.2"
       - name: DoTemplate
         shell: bash

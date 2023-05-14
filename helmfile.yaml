@@ -1,3 +1,10 @@
+environments:
+  default:
+    values:
+      - environments/default/values.yaml
+
+---
+
 repositories:
   - name: fsm-akka
     url: {{ .StateValues.url }}
