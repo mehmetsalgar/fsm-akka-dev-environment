@@ -2,7 +2,7 @@ repositories:
   - name: fsm-akka
     url: {{ .StateValues.url }}
     username: {{ .StateValues.username }}
-    password: {{ .StateValues.pswd }}
+    password: {{ env "HELM_PASSWORD" }}
     oci: true
 
 environments:
