@@ -1,4 +1,4 @@
 environments:
   default:
     values:
-      - default.yaml
+      - environments/default/values.yaml
