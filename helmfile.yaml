@@ -2,13 +2,8 @@ repositories:
   - name: fsm-akka
     url: {{ .StateValues.url }}
     username: {{ .StateValues.username }}
-    password: {{ env "HELM_PASSWORD" }}
+    password: {{ .StateValues.pswd }}
     oci: true
-
-environments:
-  default:
-    values:
-      - default.yaml
 
 releases:
   - name: foureyes
