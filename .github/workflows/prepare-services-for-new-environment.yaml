@@ -13,6 +13,12 @@ jobs:
   prepare:
     name: Preparing Services Environment
     runs-on: ubuntu-latest
+    env:
+      HELM_URL: ${{ secrets.HELM_URL }}
+      HELM_PATH: ${{ secrets.HELM_PATH }}
+      HELM_USER: ${{ secrets.HELM_USER }}
+      HELM_PASSWORD: ${{ secrets.HELM_PASSWORD }}
+      UMBRELLA_CHART_VERSION: ${{ inputs.version }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -24,19 +30,20 @@ jobs:
       - name: Remove File
         uses: JesseTG/rm@v1.0.3
         with:
-          path: ./gitops/fsmakka/
+          path: ./gitops/github/fsmakka/
       - name: Setup helmfile
         uses: mamezou-tech/setup-helmfile@v1.2.0
+        with:
+          helmfile-version: "v0.150.0"
+          helm-version: "v3.11.2"
       - name: DoTemplate
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
-          helmfile --version
-          helmfile template --state-values-set version=19.5.2 --output-dir-template ./gitops/fsmakka
-          echo $(date +%F_%T) > ./gitops/fsmakka/create_helm_templates.txt
-          echo 'Version: "${{ inputs.version }}"'
+          helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/github/fsmakka
+          echo $(date +%F_%T) > ./gitops/github/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
         with:
-          add: './gitops/fsmakka/'
+          add: './gitops/github/fsmakka/'
           message: 'Created Manifests for ${{ inputs.tag}}'
           committer_name: GitHub Actions
           committer_email: actions@github.com
