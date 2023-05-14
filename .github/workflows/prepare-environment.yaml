@@ -31,10 +31,9 @@ jobs:
           helmfile-version: "v0.150.0"
           helm-version: "v3.11.2"
       - name: DoTemplate
-        shell: bash
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
-          helmfile template --state-values-set username=$HELM_USER --state-values-set pswd="$HELM_PASSWORD" --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/github/fsmakka
+          helmfile template --state-values-set username=$HELM_USER --state-values-set pswd=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --output-dir-template ./gitops/github/fsmakka
           echo $(date +%F_%T) > ./gitops/github/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
         with:
