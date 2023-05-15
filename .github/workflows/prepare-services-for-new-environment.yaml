@@ -37,6 +37,7 @@ jobs:
           helmfile-version: "v0.153.1"
           helm-version: "v3.12.0"
       - name: DoTemplate
+        shell: bash
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
           helmfile template -e default --state-values-set username=$HELM_USER  --state-values-set pswd=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/github/fsmakka
