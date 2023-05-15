@@ -34,12 +34,12 @@ jobs:
       - name: Setup helmfile
         uses: mamezou-tech/setup-helmfile@v1.2.0
         with:
-          helmfile-version: "v0.150.0"
-          helm-version: "v3.11.2"
+          helmfile-version: "v0.153.1"
+          helm-version: "v3.12.0"
       - name: DoTemplate
         run: |
           echo 'Deploy Umbrella Chart for Service Pipeline'
-          helmfile template --state-values-set username=$HELM_USER --state-values-set password=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/github/fsmakka
+          helmfile template -e default --state-values-set username=$HELM_USER  --state-values-set pswd=$HELM_PASSWORD --state-values-set url=$HELM_URL --state-values-set path=$HELM_PATH --state-values-set version=$UMBRELLA_CHART_VERSION --output-dir-template ./gitops/github/fsmakka
           echo $(date +%F_%T) > ./gitops/github/fsmakka/create_helm_templates.txt
       - uses: EndBug/add-and-commit@v9
         with:
