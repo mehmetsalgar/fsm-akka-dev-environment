@@ -1,20 +1,22 @@
+environments:
+  default:
+    values:
+      - environments/default/values.yaml
+
+---
+
 repositories:
   - name: fsm-akka
     url: {{ .StateValues.url }}
     username: {{ .StateValues.username }}
-    password: {{ .StateValues.password }}
+    password: {{ .StateValues.pswd }}
     oci: true
-
-environments:
-  default:
-    values:
-      - default.yaml
 
 releases:
   - name: foureyes
     namespace: fsmakka
     #chart: oci://fsmakka.azurecr.io/helm/fsm-akka-helm-umbrella-chart-az
-    chart: oci://{{ .StateValues.url }}/{{ .StateValues.path }}
+    chart: oci://{{ .StateValues.url }}{{ .StateValues.path }}/fsm-akka-helm-umbrella-chart
     version: {{ .StateValues.version }}
     values:
       - values-dev.yaml
