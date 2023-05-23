@@ -5,10 +5,10 @@ kind: Deployment
 metadata:
   name: foureyes-customer-relationship-adapter-application
   labels:
-    helm.sh/chart: customer-relationship-adapter-application-1.4.0-usecase-gh-1.1
+    helm.sh/chart: customer-relationship-adapter-application-1.5.0-alpha.4
     app.kubernetes.io/name: customer-relationship-adapter-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.4.0-usecase-gh-1.1"
+    app.kubernetes.io/version: "1.5.0-alpha.4"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -29,7 +29,7 @@ spec:
         - name: customer-relationship-adapter-application
           securityContext:
             {}
-          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/customer-relationship-adapter-application:1.4.0-usecase-gh-1.1"
+          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/customer-relationship-adapter-application:1.5.0-alpha.4"
           imagePullPolicy: Always
           ports:
             - name: http
