@@ -5,10 +5,10 @@ kind: Deployment
 metadata:
   name: foureyes-fraud-prevention-application
   labels:
-    helm.sh/chart: fraud-prevention-application-1.4.0-alpha.24
+    helm.sh/chart: fraud-prevention-application-1.4.0-usecase-gh-1.1
     app.kubernetes.io/name: fraud-prevention-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.4.0-alpha.24"
+    app.kubernetes.io/version: "1.4.0-usecase-gh-1.1"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -29,7 +29,7 @@ spec:
         - name: fraud-prevention-application
           securityContext:
             {}
-          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/fraud-prevention-application:1.4.0-alpha.24"
+          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/fraud-prevention-application:1.4.0-usecase-gh-1.1"
           imagePullPolicy: Always
           ports:
             - name: http
@@ -45,7 +45,7 @@ spec:
               port: 8080
           resources:
             limits:
-              cpu: 500m
+              cpu: 100m
               memory: 512Mi
             requests:
               cpu: 100m
