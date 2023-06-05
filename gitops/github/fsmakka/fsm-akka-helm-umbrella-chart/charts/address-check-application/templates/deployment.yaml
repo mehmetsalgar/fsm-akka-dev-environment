@@ -5,10 +5,10 @@ kind: Deployment
 metadata:
   name: foureyes-address-check-application
   labels:
-    helm.sh/chart: address-check-application-1.4.0-alpha.143
+    helm.sh/chart: address-check-application-1.4.0-alpha.144
     app.kubernetes.io/name: address-check-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.4.0-alpha.143-development"
+    app.kubernetes.io/version: "1.4.0-alpha.144-development"
     app.kubernetes.io/managed-by: Helm
 spec:
   replicas: 1
@@ -29,7 +29,7 @@ spec:
         - name: address-check-application
           securityContext:
             {}
-          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/address-check-application:1.4.0-alpha.143"
+          image: "europe-west3-docker.pkg.dev/fsmakka/fsmakka-ar/address-check-application:1.4.0-alpha.144"
           imagePullPolicy: Always
           ports:
             - name: http

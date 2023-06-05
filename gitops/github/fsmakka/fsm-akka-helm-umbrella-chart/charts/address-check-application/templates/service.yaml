@@ -5,10 +5,10 @@ kind: Service
 metadata:
   name: foureyes-address-check-application
   labels:
-    helm.sh/chart: address-check-application-1.4.0-alpha.143
+    helm.sh/chart: address-check-application-1.4.0-alpha.144
     app.kubernetes.io/name: address-check-application
     app.kubernetes.io/instance: foureyes
-    app.kubernetes.io/version: "1.4.0-alpha.143-development"
+    app.kubernetes.io/version: "1.4.0-alpha.144-development"
     app.kubernetes.io/managed-by: Helm
 spec:
   type: ClusterIP
